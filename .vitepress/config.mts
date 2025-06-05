@@ -18,7 +18,15 @@ export default defineConfig({
           { text: '概述', link: '/Markdown/guid' },
           { text: '开始使用', link: '/Markdown/use' }
         ]
-      }]
+      }],
+      '/Docker/': [
+        {
+          text: 'Docker学习',
+           items: [
+          { text: '概述', link: '/Docker/' },
+        ]
+        }
+      ]
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
