@@ -11,16 +11,15 @@ export default defineConfig({
       { text: 'Examples', link: '/markdown-examples' }
     ],
 
-    sidebar: [
-      {
-        text: 'Examples',
+    sidebar: {
+      '/Markdown/': [{
+        text: 'Markdown学习',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: '概述', link: '/Markdown/guid' },
+          { text: '开始使用', link: '/Markdown/use' }
         ]
-      }
-    ],
-
+      }]
+    },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ]
