@@ -26,6 +26,16 @@ export default defineConfig({
           { text: '概述', link: '/Docker/' },
         ]
         }
+      ],
+      '/css/': [
+        {
+          text: 'css学习',
+           items: [
+          { text: '概述', link: '/css/' },
+          { text: '视差滚动', link: '/css/parallaScrolling' },
+          { text: 'iPhone SE 产品网页之 A13 晶片动画特效', link: '/css/A13' },
+        ]
+        }
       ]
     },
     socialLinks: [
