@@ -1,0 +1,34 @@
+信令交换：通过WebSocket交换SDP描述（媒体能力）
+ICE穿透：通过STUN获取公网地址，失败则使用TURN中转
+安全握手：DTLS协议建立加密通道
+媒体传输：SRTP协议传输加密的音视频流
+
+```js
+// 网络中断处理实例
+const pc = new RTCPeerConnection();
+
+// 1. ICE连接状态监控
+pc.oniceconnectionstatechange = () => {
+  if(pc.iceConnectionState === 'disconnected') {
+    restartIce(); // 重新发起ICE协商
+  }
+};
+
+// 2. 媒体流中断重传
+const restartIce = async () => {
+  const newOffer = await pc.createOffer({ iceRestart: true });
+  await pc.setLocalDescription(newOffer);
+  // 通过信令服务器转发新Offer
+};
+
+// 3. 降级策略：切换编解码器
+pc.addEventListener('negotiationneeded', async () => {
+  const transceiver = pc.getTransceivers()[0];
+  transceiver.setCodecPreferences(filterCodecs('VP9')); // 优先VP9
+});
+
+作者：前端微白
+链接：https://juejin.cn/post/7529337739356487699
+来源：稀土掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+````

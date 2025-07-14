@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            background-color: red;
+            height: 50vh;
+            width: 10vw;
+            /* transform: translate(0); */
+            will-change: transform;
+        }
+
+        .fixed {
+            width: 100%;
+            height: 20px;
+            background-color: beige;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="red">
+        <div class="fixed">dd</div>
+    </div>
+</body>
+<!-- 
+
+clientWidth 
+clientHeight 
+offsetWidth
+offsetHeight
+clientTop
+clientLeft
+offsetLeft
+offsetTop
+scrollHeight
+scrollWidth
+
+
+
+-->
+<script>
+    // const observer = new IntersectionObserver()
+    // observer.observe()
+    function MyButton() {
+        return (
+            <button>我是一个按钮</button>
+        )
+    }
+</script>
+
+</html>

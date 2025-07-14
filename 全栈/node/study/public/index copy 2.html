@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost:9006/css/index.css">
+    <title>静态页面</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
+    <!-- <script src="http://localhost:9006/js/index.js"></script> -->
+</head>
+
+<body>
+    <!-- <form action="http://localhost:9006/api/upload" method="post" enctype="multipart/form-data">
+        <p>
+            <input type="file" name="img"> -->
+
+    <!-- <input type="text" name="loginId"> -->
+    <!-- </p>
+        <p>
+            <input type="password" name="loginPwd">
+        </p>
+        <button type="submit">upload </button>
+    </form> -->
+    <!-- <img src="" alt="">
+    <input type="file" name="img"> -->
+    <input type="" name="" value="">
+    <p></p>
+    <button>send </button>
+    <script>
+        const btn = document.querySelector("button")
+        const input = document.querySelector("input")
+        const p = document.querySelector("p")
+        // async function upload() {
+        //     const input = document.querySelector("[name=img]")
+        //     const formData = new FormData()
+        //     for (const file of input.files) {
+        //         formData.append("img", file, file.name)
+        //     }
+
+        //     const res = await fetch("http://localhost:9006/api/upload", {
+        //         method: "POST",
+        //         body: formData
+        //     })
+        //     const res2 = await res.text()
+        //     const img = document.querySelector("img")
+        //     img.src = JSON.parse(res2).data
+        // }
+        // btn.addEventListener("click", upload)
+        const socket = io.connect()
+        btn.addEventListener("click", () => {
+            socket.emit("msg", input.value)
+        })
+        socket.on("test", (val) => {
+            console.log("val", val)
+        })
+
+    </script>
+</body>
+
+</html>

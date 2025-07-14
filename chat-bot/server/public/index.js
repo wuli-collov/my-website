@@ -1,0 +1,40 @@
+const btn = document.querySelector('button');
+const input = document.querySelector('input');
+const messge = document.querySelector('#message');
+async function init(question) {
+  try {
+    const res = await fetch('/api/ask', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({ question }),
+    });
+    //   创建一个可读流
+    const reader = res.body.getReader();
+    if (!reader) {
+      return;
+    }
+    const decoder = new TextDecoder('utf-8');
+    let botMessage = '';
+    while (true) {
+      const { done, value } = await reader.read();
+      console.log(value, 'value');
+      if (done) break;
+      const chunk = decoder.decode(value, { stream: true });
+      const lines = chunk.split('\n').filter((line) => line.trim());
+      for (const line of lines) {
+        const data = JSON.parse(line);
+        if (data.response) {
+          botMessage += data.response;
+        }
+        messge.innerHTML = botMessage;
+      }
+    }
+  } catch (e) {
+    messge.innerHTML = '11';
+    console.log(e);
+  }
+}
+
+btn.addEventListener('click', () => {
+  init(input.value);
+});
