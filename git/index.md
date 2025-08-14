@@ -34,3 +34,6 @@ git config --global user.email "1477515364@qq.com"
 git status
 初始化 git
 git init
+
+// 提交所有已修改的文件
+git commit -a -m "fix"
